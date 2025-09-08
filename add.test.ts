@@ -23,6 +23,9 @@ describe('Add function',()=>{
         expect(add("//*\n1*2*3*4")).toBe(10);
         expect(add("//.\n45.5")).toBe(50);
         expect(add("//+\n12+3+5")).toBe(20);
+        expect(add("//(\n45(5")).toBe(50);
+        expect(add("//)\n45)5")).toBe(50);
+        expect(add("//?\n45?5")).toBe(50);
     })
     test("Throw an exception if add called with negative number/numbers",()=>{
         expect(()=>add("-1,2,3")).toThrow("negative numbers not allowed -1");

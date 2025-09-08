@@ -12,7 +12,11 @@ export const add = (nums: string): number =>{
         delimiter=new RegExp(matchedDelimiter);
         nums=nums.slice(match[0].length);
     }
-    let arr: number[]=nums.trim().split(delimiter).map(Number);
+    let arr: number[]=nums.trim().split(delimiter).filter(n=>n.length>0).map(Number);
+    let negativeNumbers: number[]=arr.filter(n=>n<0);
+    if(negativeNumbers.length>0){
+        throw Error(`negative numbers not allowed ${negativeNumbers.join(',')}`);
+    }
     const sum: number=arr.reduce((acc,n)=>acc+=n,0)
     return sum
 }
